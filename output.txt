@@ -1,0 +1,6 @@
+city	1
+city	1
+city	1
+village	1
+a	1
+A	1
