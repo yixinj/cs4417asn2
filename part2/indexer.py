@@ -1,10 +1,3 @@
-# Read CSV
-# Convert to an index form
-# Movie name -> all lines that contain this
-
-# import sys
-
-
 def inverted_index(path):
     d = {}
 
@@ -22,6 +15,7 @@ def inverted_index(path):
             movie_genres = movie_genres.split('|')
             for genre in movie_genres:
                 # If genre is blank, replace it with 'None'
+                # A design choice was 'None' be one of many genres for a movie
                 if genre == '':
                     genre = 'None'
                 # Convert genre to upper
