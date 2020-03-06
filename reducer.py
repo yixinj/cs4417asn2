@@ -5,7 +5,6 @@ current_word = None
 current_count = 0
 word = None
 
-# with open('output.txt', 'rb') as f:
 for line in sys.stdin:
     line = line.strip()
     word, count = line.split('\t', 1)
@@ -29,3 +28,6 @@ for line in sys.stdin:
 # Output last word if needed
 if current_word == word:
     print('%s\t%s' % (current_word, current_count))
+
+
+# with open('output.txt', 'rb') as f:
