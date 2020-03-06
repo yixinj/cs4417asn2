@@ -6,7 +6,7 @@
 import sys
 
 d = {}
-with open('cityInformation', 'rb') as f:
+with open('cityInformation', 'r') as f:
     for line in f:
         line = line.strip()
         word, count = line.split('\t')
