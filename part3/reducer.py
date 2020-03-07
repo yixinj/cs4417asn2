@@ -10,7 +10,6 @@ for line in sys.stdin:
     line = line.strip()
     genre, movie_name = line.split('\t', 1)
 
-    # Add the counts (works because Hadoop sorts entries)
     if current_genre == genre:
         current_movies += movie_name + "|"
     else:
