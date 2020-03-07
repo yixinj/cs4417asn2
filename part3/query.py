@@ -1,29 +1,41 @@
-# Take query
-for 
-# Get results
-with open('part3/movieInformation', 'r') as f:
-    for line in f:
-        line = line.strip()
-        genre, movies = line.split('\t')
-        movies = movies.split('|')
+import sys
 
+for query in sys.stdin:
+    # Take query and process it
+    query = query.strip().upper().split()
 
-# lines = ['None and Documentary']
+    # If length of query is 1 (so 1 search term)
+    if len(query) == 1:
+        genre_first = query[0]  # genre1 is genre to search for
+        with open('part3/movieInformation', 'r') as f:
+            for line in f:
+                line = line.strip()
+                genre, movies = line.split('\t')
+                if genre_first == genre:
+                    movies = movies.split('|')
+                    print(movies)
 
-# for line in lines:
-#     line = line.upper()
-#     words = line.split()
+    # Otherwise ...
+    else:
+        genre_first, operator, genre_second = query
+        first_set = second_set = None
 
-#     # If the query has no operator, print all movies with that genre
-#     if len(words) == 1:
-#         genre = words[0]
-#         print(d[genre])
-#     # Otherwise ...
-#     else:
-#         genre_first, operator, genre_second = words
-#         if operator == 'AND':
-#             # AND is the intersection of the sets
-#             print(d[genre_first].intersection(d[genre_second]))
-#         if operator == 'OR':
-#             # OR is the union of the sets
-#             print(d[genre_first].union(d[genre_second]))
+        with open('part3/movieInformation', 'r') as f:
+            for line in f:
+                line = line.strip()
+                genre, movies = line.split('\t')
+                if genre_first == genre:
+                    movies = movies.split('|')
+                    first_set = set(movies)
+                if genre_second == genre:
+                    movies = movies.split('|')
+                    second_set = set(movies)
+
+        # Output set that fits the operator
+        if operator == 'AND':
+            # AND is the intersection of the sets
+            print(first_set.intersection(second_set))
+
+        if operator == 'OR':
+            # OR is the union of the sets
+            print(first_set.union(second_set))
