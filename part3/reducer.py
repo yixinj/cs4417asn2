@@ -12,16 +12,14 @@ for line in sys.stdin:
 
     # Add the counts (works because Hadoop sorts entries)
     if current_genre == genre:
-        current_movies += movie_name + ","
+        current_movies += movie_name + "\t"
     else:
         if current_genre:
             # Write result to stdout
             print('%s\t%s' % (current_genre, current_movies))
-        current_movies = movie_name
+        current_movies = movie_name + "\t"
         current_genre = genre
 
 # Output last word if needed
 if current_genre == genre:
-    print('%s\t%s' % (current_genre, current_movies))
-
-# with open('output.txt', 'rb') as f:
+    print('%s\t%s' % (current_genre, current_movies.strip()))
