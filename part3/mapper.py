@@ -19,5 +19,5 @@ for line in sys.stdin:
         # Convert genre to upper
         genre = genre.upper()
 
-        # Print movie name and genre, separated by a tab
-        print '%s\t%s' % (movie_name, genre)
+        # Print genre and movie name, separated by a tab
+        print '%s\t%s' % (genre, movie_name)
