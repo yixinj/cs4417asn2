@@ -6,7 +6,10 @@
 import sys
 
 for query in sys.stdin:
+    # Process query
     query = query.strip().upper()
+
+    # Get results
     with open('part1/cityInformation', 'r') as f:
         for line in f:
             line = line.strip()
