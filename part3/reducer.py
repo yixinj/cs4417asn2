@@ -12,12 +12,12 @@ for line in sys.stdin:
 
     # Add the counts (works because Hadoop sorts entries)
     if current_genre == genre:
-        current_movies += movie_name + "|"
+        current_movies += movie_name
     else:
         if current_genre:
             # Write result to stdout
             print('%s\t%s' % (current_genre, current_movies))
-        current_movies = movie_name + "|"
+        current_movies = "|" + movie_name
         current_genre = genre
 
 # Output last word if needed
